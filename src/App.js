@@ -8,6 +8,8 @@ import { Route, Routes } from 'react-router-dom'
 import Home from './pages/Home';
 import About from './pages/About';
 import Contact from './pages/Contact';
+import CreateArticle from './components/Blog/CreateArticle';
+import ListArticles from './components/Blog/ListArticles';
 
 function App() {
 
@@ -48,8 +50,11 @@ function App() {
                 <Route path="/About" element={<About />} />
             
                 <Route path="/Contact" element={<Contact />} />
-            
 
+                <Route path="/article/create" element={<CreateArticle />} />
+
+                <Route path="/articles" element={<ListArticles />} />
+            
              </Routes>
 
 
