@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 function Navbar() {
 
@@ -7,7 +7,7 @@ function Navbar() {
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
             <div className="container-fluid">
-                <Link className="navbar-brand" to="/">Mundiapolis</Link>
+                <NavLink className="navbar-brand" to="/">Mundiapolis</NavLink>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
                 </button>
@@ -15,25 +15,25 @@ function Navbar() {
                 <div className="collapse navbar-collapse" id="navbarColor01">
                 <ul className="navbar-nav me-auto">
                     <li className="nav-item">
-                    <Link className="nav-link active" to="/">Home
+                    <NavLink className="nav-link" to="/">Home
                         <span className="visually-hidden">(current)</span>
-                    </Link>
+                    </NavLink>
                     </li>
 
                     <li className="nav-item">
-                    <Link className="nav-link active" to="/users">Users</Link>
+                    <NavLink className="nav-link" to="/users">Users</NavLink>
                     </li>
                    
                     <li className="nav-item">
-                    <Link className="nav-link active" to="/about">About</Link>
+                    <NavLink className="nav-link" to="/about">About</NavLink>
                     </li>
 
                     <li className="nav-item">
-                        <Link className="nav-link active" to="/contact">Contact</Link>
+                        <NavLink className="nav-link" to="/contact">Contact</NavLink>
                     </li>
 
                     <li className="nav-item">
-                        <Link className="nav-link active" to="/articles">Blog</Link>
+                        <NavLink className="nav-link" to="/articles">Blog</NavLink>
                     </li>
                 </ul>
                

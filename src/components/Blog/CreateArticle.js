@@ -1,6 +1,34 @@
-import React from 'react'
+import React, {useRef} from 'react'
+import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
 function CreateArticle() {
+
+    const navigate = useNavigate()
+
+    const title = useRef("")
+    const content = useRef("")
+
+    const addArticle = (e) => {
+        e.preventDefault()
+        
+        let article = {
+            title: title.current.value,
+            content: content.current.value
+        }
+
+        axios.post("http://localhost:4000/articles", article)
+             .then(response => {
+                
+                title.current.value = ""
+                 content.current.value = ""
+                 
+                 navigate("/articles")
+
+             })
+             .catch(error => console.log(error))
+    }
+
     return (
         <div>
             <div className="row my-4">
@@ -11,17 +39,17 @@ function CreateArticle() {
             </div>
             <div className="row my-3">
                 <div className="col-md-8 mx-auto">
-                    <form action="">
+                    <form onSubmit={addArticle}>
                         <div className="form-group">
                             <label htmlFor="" className="form-label">Title</label>
-                            <input type="text" name="" id="" placeholder='Title of article' className="form-control" />
+                            <input ref={title} type="text" name="" id="" placeholder='Title of article' className="form-control" />
                         </div>
                         <div className="form-group my-4">
                             <label htmlFor="" className="form-label">Content</label>
-                            <textarea name="" id="" rows="4" className="form-control"></textarea>
+                            <textarea ref={content} name="" id="" rows="4" className="form-control"></textarea>
                         </div>
                         <div className="d-grid">
-                            <button className="btn btn-primary" type="button">Add article</button>
+                            <button className="btn btn-primary" type="submit">Add article</button>
                         </div>
                     </form>
                 </div>
