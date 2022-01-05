@@ -13,6 +13,19 @@ function ListArticles() {
              .catch(err => console.error(err))
     } 
 
+    const deleteArticle = (id) => {
+
+        if(!window.confirm("You want delete this article ")) {
+            return
+        }
+
+        axios.delete(`http://localhost:4000/articles/${id}`)
+             .then(() => {
+                 setArticles(articles.filter(article => article.id != id))
+             })
+             .catch(err => console.error(err))
+    }
+
     useEffect(() => {
         getAllArticles()
     }, [])
@@ -30,6 +43,7 @@ function ListArticles() {
 
                 <div className="col-md-6">
                    <OneArticle title={article.title} content={article.content} />
+                   <button onClick={() => deleteArticle(article.id)} className='btn btn-danger'>Delete</button>
                 </div>
 
             ))}
